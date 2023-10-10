@@ -22,9 +22,8 @@ class BookController extends Controller
         $book = new Book();
         $book->author = $request->author;
         $book->title = $request->title;
-        $book->pieces = $request->pieces;
         $book->save();
-        return redirect("/book/list");
+        //return redirect("/book/list");
     }
 
     public function update(Request $request, $id)
@@ -32,15 +31,14 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->author = $request->author;
         $book->title = $request->title;
-        $book->pieces = $request->pieces;
         $book->save();
-        return redirect("/book/list");
+        //return redirect("/book/list");
     }
 
     public function delete($id)
     {
         Book::find($id)->delete();
-        return redirect("/book/list");
+        //return redirect("/book/list");
     }
 
     public function listView()

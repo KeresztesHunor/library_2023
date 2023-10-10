@@ -14,18 +14,22 @@ return new class extends Migration
     {
         Schema::create('copies', function (Blueprint $table) {
             $table->id('copy_id');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->boolean('hardcovered')->default(0);
+            $table->integer('status');
+            $table->year('publication');
             $table->foreignId('book_id')->references('book_id')->on('books');
             $table->timestamps();
         });
 
         Copy::create([
-            'user_id' => 1,
+            'status' => 0,
+            'publication' => 1969,
             'book_id' => 1,
         ]);
 
         Copy::create([
-            'user_id' => 2,
+            'status' => 1,
+            'publication' => 1999,
             'book_id' => 2,
         ]);
     }

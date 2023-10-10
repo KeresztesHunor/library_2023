@@ -16,18 +16,15 @@ return new class extends Migration
             $table->id('book_id');
             $table->string('author', 32);
             $table->string('title', 128);
-            $table->integer('pieces')->default(64);
             $table->timestamps();
         });
 
         Book::create([
-            'book_id' => 1,
             'author' => 'Agyalá Gyula',
             'title' => 'C for dummies',
         ]);
 
         Book::create([
-            'book_id' => 2,
             'author' => 'Lapos Elemér',
             'title' => 'Kamasutra',
         ]);
