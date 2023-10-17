@@ -12,9 +12,9 @@ class LendingController extends Controller
         return response()->json(Lending::all());
     }
 
-    public function show($id)
+    public function show($user_id, $copy_id, $start)
     {
-        return response()->json(Lending::find($id));
+        return response()->json(Lending::where('user_id', $user_id)->where('copy_id', $copy_id)->where('start', $start)->get());
     }
 
     public function store(Request $request)
@@ -27,19 +27,9 @@ class LendingController extends Controller
         //return redirect("/lending/list");
     }
 
-    public function update(Request $request, $id)
+    public function destroy($user_id, $copy_id, $start)
     {
-        $lending = Lending::find($id);
-        $lending->user_id = $request->user_id;
-        $lending->copy_id = $request->copy_id;
-        $lending->start = $request->start;
-        $lending->save();
-        //return redirect("/lending/list");
-    }
-
-    public function delete($id)
-    {
-        Lending::find($id)->delete();
+        Lending::where('user_id', $user_id)->where('copy_id', $copy_id)->where('start', $start)->get()->delete();
         //return redirect("/lending/list");
     }
 }

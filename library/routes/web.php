@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CopyController;
+use App\Http\Controllers\LendingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +35,6 @@ Route::middleware('auth')->group(function () {
 Route::apiResource('/api/books', BookController::class);
 Route::apiResource('/api/copies', CopyController::class);
 Route::apiResource('/api/users', UserController::class);
+Route::delete('api/lendings/{user_id}/{copy_id}/{start}', [LendingController::class, 'destroy']);
 
 require __DIR__.'/auth.php';
